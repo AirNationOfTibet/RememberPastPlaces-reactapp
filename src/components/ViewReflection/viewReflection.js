@@ -1,21 +1,36 @@
+
 import React, { Component } from 'react';
-import IconButton from 'material-ui/IconButton';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import {connect} from 'react-redux';
+// import IconButton from 'material-ui/IconButton';
+import ReflectionItem from './ReflectionItem/ReflectionItem.js';
+
+
 
 class ViewReflection extends Component{
-    constructor(props){
-        super(props)
-        this.state = {
-            reflections: [],
-        }
+    
+    //componentDidMount will be the function that calls get reflection.
+    componentDidMount(){
+        this.props.dispatch({
+            type: "GET_REFLECTION"
+        });
     }
     render(){
+        //We can create an instance so we can do a .map on the reflectionList
+        let singleReflection = this.props.state.reflectionList.map((reflection)=>{
+            return(
+                <ReflectionItem key={reflection.id} reflection={reflection} />
+            )
+        });
         return(
             <div>
-                <p>Hello</p>
+                {singleReflection}
             </div>
-        )
+        );
     }
 }
 
-export default ViewReflection;
+const mapStateToProps = state => ({
+    state,
+});
+
+export default connect(mapStateToProps)(ViewReflection);

@@ -10,11 +10,11 @@ class Navbar extends Component {
     render(){
         return(
             <div>
-            <table className='navBar'>
+            <table>
                 <tbody>
                     <tr>
                         <th>
-                        <Link to ="/addnewreflection"> Add New Reflection </Link>
+                        <Link to ="/"> Add New Reflection </Link>
                         </th>
                         <th>
                         <Link to ="/viewreflectionpage"> View Reflections </Link>
@@ -22,7 +22,7 @@ class Navbar extends Component {
                     </tr>
                 </tbody>
             </table>
-            <Route exact path="/addnewreflection" component={AddReflection}/>
+            <Route exact path="/" component={AddReflection}/>
             <Route exact path="/viewreflectionpage" component={ViewReflection}/>
             </div>
         )
